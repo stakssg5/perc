@@ -1,0 +1,16 @@
+def extract_messages_by_number():  
+    target_number = input("😈 Enter the contact number to search (e.g., +1234567890): ")  
+    file_path = input("😈 Enter the text file path (e.g., messages.txt): ")  
+
+    if not os.path.exists(file_path):  
+        print(f"😈 File '{file_path}' not found! 😈")  
+        return  
+
+    print(f"😈 Searching for messages containing '{target_number}'... 😈")  
+    with open(file_path, 'r') as file:  
+        for line in file:  
+            if target_number in line:  
+                print(f"😈 {line.strip()} 😈")  
+
+# Run the script  
+extract_messages_by_number()  
